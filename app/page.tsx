@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { supabase } from '@/lib/supabase';
+import { supabase, isUsingPlaceholderCredentials, saveToLocalStorage } from '@/lib/supabase';
 
 // Force dynamic rendering since we use Supabase
 export const dynamic = 'force-dynamic';
@@ -19,7 +19,27 @@ export default function Home() {
     setError('');
 
     try {
-      // Insert email into database (or update if exists)
+      // Check if we're using placeholder credentials
+      if (isUsingPlaceholderCredentials()) {
+        // Use localStorage fallback for demo mode
+        const result = saveToLocalStorage({
+          email,
+          completed_signup: false,
+          updated_at: new Date().toISOString()
+        });
+
+        if (!result.success) {
+          setError('Failed to save email. Please try again.');
+          setLoading(false);
+          return;
+        }
+
+        // Navigate to complete signup page with email
+        router.push(`/complete-signup?email=${encodeURIComponent(email)}`);
+        return;
+      }
+
+      // Use Supabase for real database
       const { error: dbError } = await supabase
         .from('waitlist')
         .upsert(

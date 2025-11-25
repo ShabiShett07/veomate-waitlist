@@ -2,6 +2,22 @@
 
 This guide will help you set up your Supabase database for the VeoMate waitlist.
 
+## 🎮 Demo Mode
+
+**The application currently runs in DEMO MODE** using localStorage as a fallback. This allows you to test the complete waitlist flow without setting up Supabase first.
+
+### How Demo Mode Works:
+- All form submissions are saved to browser localStorage
+- Data persists in your browser (not shared across devices/browsers)
+- Perfect for testing the UI and flow
+- Check browser console to see demo mode messages
+- View saved data in browser DevTools → Application → Local Storage → `veomate_waitlist_demo`
+
+### To Enable Real Database:
+Follow the setup steps below to connect to Supabase and switch from demo mode to a real database.
+
+---
+
 ## Prerequisites
 
 1. Create a Supabase account at [https://supabase.com](https://supabase.com)

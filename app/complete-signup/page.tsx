@@ -2,7 +2,7 @@
 
 import { useState, useEffect, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { supabase } from '@/lib/supabase';
+import { supabase, isUsingPlaceholderCredentials, saveToLocalStorage } from '@/lib/supabase';
 
 // Force dynamic rendering since we use Supabase
 export const dynamic = 'force-dynamic';
@@ -47,7 +47,35 @@ function CompleteSignupForm() {
     setError('');
 
     try {
-      // Update the existing waitlist entry with complete information
+      // Check if we're using placeholder credentials
+      if (isUsingPlaceholderCredentials()) {
+        // Use localStorage fallback for demo mode
+        const result = saveToLocalStorage({
+          email,
+          first_name: formData.firstName,
+          last_name: formData.lastName,
+          country_code: formData.countryCode,
+          phone_number: formData.phoneNumber,
+          company_name: formData.companyName || null,
+          role: formData.role || null,
+          team_size: formData.teamSize || null,
+          hear_about: formData.hearAbout || null,
+          completed_signup: true,
+          updated_at: new Date().toISOString()
+        });
+
+        if (!result.success) {
+          setError('Failed to save your information. Please try again.');
+          setLoading(false);
+          return;
+        }
+
+        // Redirect to success page
+        router.push('/welcome');
+        return;
+      }
+
+      // Use Supabase for real database
       const { error: dbError } = await supabase
         .from('waitlist')
         .update({

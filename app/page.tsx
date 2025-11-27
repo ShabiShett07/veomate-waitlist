@@ -76,11 +76,20 @@ export default function Home() {
     <div className="min-h-screen bg-[#0a0a0a]">
       {/* Hero Section */}
       <section className="relative px-6 pt-20 pb-32 overflow-hidden">
-        {/* Gradient Background */}
-        <div className="absolute inset-0 -z-10">
-          <div className="absolute top-0 left-1/4 w-96 h-96 bg-gray-600 opacity-20 rounded-full blur-3xl"></div>
-          <div className="absolute top-20 right-1/4 w-96 h-96 bg-gray-500 opacity-20 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-0 left-1/2 w-96 h-96 bg-gray-400 opacity-20 rounded-full blur-3xl"></div>
+        {/* Video Background */}
+        <div className="absolute inset-0 -z-10 overflow-hidden">
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute top-1/2 left-1/2 min-w-full min-h-full w-auto h-auto -translate-x-1/2 -translate-y-1/2 object-cover opacity-30"
+          >
+            <source src="/hero-video.mp4" type="video/mp4" />
+            <source src="/hero-video.webm" type="video/webm" />
+          </video>
+          {/* Gradient Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a]/80 via-[#0a0a0a]/60 to-[#0a0a0a]/80"></div>
         </div>
 
         <div className="max-w-6xl mx-auto">

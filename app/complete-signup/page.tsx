@@ -115,12 +115,12 @@ function CompleteSignupForm() {
   }
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-[#0a0a0a]">
       {/* Gradient Background */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-gray-400 opacity-10 rounded-full blur-3xl"></div>
-        <div className="absolute top-20 right-1/4 w-96 h-96 bg-gray-500 opacity-10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 left-1/2 w-96 h-96 bg-gray-600 opacity-10 rounded-full blur-3xl"></div>
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-gray-600 opacity-20 rounded-full blur-3xl"></div>
+        <div className="absolute top-20 right-1/4 w-96 h-96 bg-gray-500 opacity-20 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 left-1/2 w-96 h-96 bg-gray-400 opacity-20 rounded-full blur-3xl"></div>
       </div>
 
       <div className="max-w-2xl mx-auto px-6 py-20">
@@ -136,24 +136,24 @@ function CompleteSignupForm() {
               className="w-20 h-20 md:w-24 md:h-24"
             />
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 text-black">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 text-white">
             VeoMate
           </h1>
-          <p className="text-xl text-gray-600">Almost there! Complete your profile</p>
+          <p className="text-xl text-gray-300">Almost there! Complete your profile</p>
         </div>
 
         {/* Form */}
-        <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-8">
+        <div className="bg-[#1a1a1a] rounded-2xl shadow-lg border border-gray-800 p-8">
           <div className="mb-6">
-            <p className="text-sm text-gray-600">Signing up with</p>
-            <p className="text-lg font-semibold text-gray-800">{email}</p>
+            <p className="text-sm text-gray-400">Signing up with</p>
+            <p className="text-lg font-semibold text-gray-100">{email}</p>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* Name Fields */}
             <div className="grid md:grid-cols-2 gap-4">
               <div>
-                <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="firstName" className="block text-sm font-medium text-gray-300 mb-2">
                   First Name <span className="text-red-500">*</span>
                 </label>
                 <input
@@ -163,12 +163,12 @@ function CompleteSignupForm() {
                   value={formData.firstName}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 rounded-lg border-2 border-gray-300 focus:border-black focus:outline-none text-gray-800 transition-colors"
+                  className="w-full px-4 py-3 rounded-lg border-2 border-gray-700 bg-[#0a0a0a] focus:border-gray-500 focus:outline-none text-white placeholder-gray-500 transition-colors"
                   placeholder="John"
                 />
               </div>
               <div>
-                <label htmlFor="lastName" className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="lastName" className="block text-sm font-medium text-gray-300 mb-2">
                   Last Name <span className="text-red-500">*</span>
                 </label>
                 <input
@@ -178,7 +178,7 @@ function CompleteSignupForm() {
                   value={formData.lastName}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 rounded-lg border-2 border-gray-300 focus:border-black focus:outline-none text-gray-800 transition-colors"
+                  className="w-full px-4 py-3 rounded-lg border-2 border-gray-700 bg-[#0a0a0a] focus:border-gray-500 focus:outline-none text-white placeholder-gray-500 transition-colors"
                   placeholder="Doe"
                 />
               </div>
@@ -186,7 +186,7 @@ function CompleteSignupForm() {
 
             {/* Phone Number */}
             <div>
-              <label htmlFor="phoneNumber" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="phoneNumber" className="block text-sm font-medium text-gray-300 mb-2">
                 Phone Number <span className="text-red-500">*</span>
               </label>
               <div className="flex gap-2">
@@ -194,7 +194,7 @@ function CompleteSignupForm() {
                   name="countryCode"
                   value={formData.countryCode}
                   onChange={handleChange}
-                  className="px-4 py-3 rounded-lg border-2 border-gray-300 focus:border-black focus:outline-none text-gray-800 transition-colors"
+                  className="px-4 py-3 rounded-lg border-2 border-gray-700 bg-[#0a0a0a] focus:border-gray-500 focus:outline-none text-white transition-colors"
                 >
                   <option value="+1">🇺🇸 +1</option>
                   <option value="+44">🇬🇧 +44</option>
@@ -232,7 +232,7 @@ function CompleteSignupForm() {
 
             {/* Company Name */}
             <div>
-              <label htmlFor="companyName" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="companyName" className="block text-sm font-medium text-gray-300 mb-2">
                 Company Name (Optional)
               </label>
               <input
@@ -248,7 +248,7 @@ function CompleteSignupForm() {
 
             {/* Role */}
             <div>
-              <label htmlFor="role" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="role" className="block text-sm font-medium text-gray-300 mb-2">
                 Your Role (Optional)
               </label>
               <input
@@ -264,7 +264,7 @@ function CompleteSignupForm() {
 
             {/* Team Size */}
             <div>
-              <label htmlFor="teamSize" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="teamSize" className="block text-sm font-medium text-gray-300 mb-2">
                 Team Size (Optional)
               </label>
               <select
@@ -285,7 +285,7 @@ function CompleteSignupForm() {
 
             {/* How did you hear about us */}
             <div>
-              <label htmlFor="hearAbout" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="hearAbout" className="block text-sm font-medium text-gray-300 mb-2">
                 How did you hear about VeoMate? (Optional)
               </label>
               <select
@@ -316,7 +316,7 @@ function CompleteSignupForm() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full px-8 py-4 rounded-full bg-black text-white font-semibold hover:bg-gray-800 hover:shadow-lg transform hover:scale-105 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full px-8 py-4 rounded-full bg-white text-black font-semibold hover:bg-gray-200 hover:shadow-lg transform hover:scale-105 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {loading ? 'Submitting...' : 'Complete Registration'}
             </button>
@@ -330,10 +330,10 @@ function CompleteSignupForm() {
 export default function CompleteSignup() {
   return (
     <Suspense fallback={
-      <div className="min-h-screen bg-white flex items-center justify-center">
+      <div className="min-h-screen bg-[#0a0a0a] flex items-center justify-center">
         <div className="text-center">
-          <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-black border-r-transparent"></div>
-          <p className="mt-4 text-gray-600">Loading...</p>
+          <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-white border-r-transparent"></div>
+          <p className="mt-4 text-gray-400">Loading...</p>
         </div>
       </div>
     }>
